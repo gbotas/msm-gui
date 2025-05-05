@@ -1,6 +1,42 @@
 <h1>
   List of all movies
 </h1>
+<hr>
+
+<form action = "/insert_movie" method = "post">
+
+<div>
+<label for= "title_box">Title</label>
+<input id = "title_box" type= "text" name="title_box">
+</div>
+
+<div>
+<label for= "year_box">Year</label>
+<input id = "year_box" type= "text" name="year_box">
+</div>
+
+<div>
+<label for= "duration_box">Duration</label>
+<input id = "duration_box" type= "text" name="duration_box">
+</div>
+
+<div>
+<label for= "description_box">Description</label>
+<textarea id = "description_box" name="description_box" rows= 3></textarea>
+</div>
+
+<div>
+<label for= "image_box">Image</label>
+<input id = "image_box" type= "text" name="image_box">
+</div>
+
+<div>
+<label for= "director_id_box">Director ID</label>
+<input id = "director_id_box" type= "text" name="director_id_box">
+</div>
+<button> 
+Create movie 
+</button>
 
 <hr>
 
@@ -53,7 +89,13 @@
       
       <% the_director = matching_directors.at(0) %>
 
-      <%= the_director.name %>
+      <% if the_director == nil %>
+      Uh oh! We weren't able to find a director for this movie.
+      <% else %> 
+      
+        <%= the_director.name %>
+      <% end %>
+
     </td>
 
     <td>
