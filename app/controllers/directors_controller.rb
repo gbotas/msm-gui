@@ -37,26 +37,25 @@ class DirectorsController < ApplicationController
   
     def edit
       #Get the ID out of params
-      m_id = params.fetch("the_id")
+      dir_id = params.fetch("the_id")
   
       # Look up existing record
-      matching_records = Movie.where({ :id => m_id})
-      the_movie = matching_records.at(0)
+      matching_records = Director.where({ :id => dir_id})
+      the_director = matching_records.at(0)
   
       # Overwrite each columns with user inputs
       
-      the_movie.title = params.fetch("title_box")
-      the_movie.year = params.fetch("year_box")
-      the_movie.duration = params.fetch("duration_box")
-      the_movie.description = params.fetch("description_box") 
-      the_movie.image = params.fetch("image_box")
-      the_movie.director_id = params.fetch("director_id_box")
+      the_director.name = params.fetch("name_box")
+      the_director.dob = params.fetch("dob_box")
+      the_director.bio = params.fetch("bio_box")
+      the_director.image = params.fetch("image_box")
+  
   
       #Save
-      the_movie.save
+      the_director.save
       #Redirect to movie details page
   
-      redirect_to("/movies/#{the_movie.id}")
+      redirect_to("/directors/#{the_director.id}")
     end 
   
   def index
